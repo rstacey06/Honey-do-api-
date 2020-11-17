@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_124352) do
   create_table "goals", force: :cascade do |t|
     t.string "description"
     t.integer "todo_id"
-    t.integer "completed"
+    t.integer "completed", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_124352) do
   create_table "todos", force: :cascade do |t|
     t.string "target"
     t.string "plan"
-    t.integer "completed"
+    t.integer "completed", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

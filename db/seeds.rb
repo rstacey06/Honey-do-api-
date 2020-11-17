@@ -8,12 +8,12 @@
 
 Todo.delete_all
 
-Todo.create(target:"Remodel Kitchen", plan: "Do whatever my wife wants")
-Todo.create(target:"Grocerys", plan: "Go to the Grocery Store")
+todo1 = Todo.create(target:"Remodel Kitchen", plan: "Do whatever my wife wants")
+todo2 = Todo.create(target:"Grocerys", plan: "Go to the Grocery Store")
 
-Goal.create(description: "Eggs", todo_id: 13, completed: 0)
-Goal.create(description: "Milk", todo_id: 13, completed: 0)
-Goal.create(description: "Bread", todo_id: 13, completed: 0)
+goal1 = Goal.create(description: "Eggs", todo_id: 1, completed: 0)
+goal2 = Goal.create(description: "Milk", todo_id: 1, completed: 0)
+goal3 = Goal.create(description: "Bread", todo_id: 1, completed: 0)
 
-Goal.create(description: "Higher a Contractor", todo_id: 12, completed: 0)
+goal4 = Goal.create(description: "Higher a Contractor", todo_id: 2, completed: 0)
 Goal.create

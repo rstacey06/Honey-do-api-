@@ -1,51 +1,48 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :update, :destroy]
+  # before any action, our set_todo and set_goal methods will run
+    before_action :set_todo
+    before_action :set_goal, only: [:show]
 
-  # GET /goals
-  def index
-    @goals = Goal.all
-
-    render json: @goals
-  end
-
-  # GET /goals/1
-  def show
-    render json: @goal
-  end
-
-  # POST /goals
-  def create
-    @goal = Goal.new(goal_params)
-
-    if @goal.save
-      render json: @goal, status: :created, location: @goal
-    else
-      render json: @goal.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /goals/1
-  def update
-    if @goal.update(goal_params)
-      render json: @goal
-    else
-      render json: @goal.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /goals/1
-  def destroy
-    @goal.destroy
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_goal
-      @goal = Goal.find(params[:id])
+    # load all goals, which belong to a todo
+    def index
+      @goals = @todo.goals.all
+      render json: @goals
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # dispaly an goal by id
+    def show
+        @goal = Goal.find(params[:id])
+        render json: @goal
+    end
+
+    # create a new goal, nested under a todo
+    def create
+        @goal = @todo.goals.create(goal_params)
+        render json: @goal
+    end
+
+    # permanently delete an goal after finding it by id
+    def destroy
+        @goal = Goal.find(params[:id])
+        @goal.destroy
+        render json: @goal
+    end
+
+
+    private
+
+    # params require an goal and permit the attribute of description to be modified
     def goal_params
-      params.require(:goal).permit(:description, :todo_id, :completed)
+        params.require(:goal).permit(:description)
+    end
+
+    # finds a todo by id
+    def set_todo
+        @todo = Todo.find_by(id: params[:todo_id])
+    end
+
+    # finds goal which belongs to a todo by id
+    def set_goal
+        @goal = @todo.goals.find_by(id: params[:id])
     end
 end

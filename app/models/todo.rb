@@ -1,4 +1,4 @@
 class Todo < ApplicationRecord
-  belongs_to :todo
-  validates :description, presence: true
+  has_many :goals, dependent: :destroy
+  validates :target, :plan, presence: true
 end
