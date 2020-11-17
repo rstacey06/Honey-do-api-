@@ -3,9 +3,9 @@
 one:
   target: MyString
   plan: MyString
-  compleated: 1
+  completed: 1
 
 two:
   target: MyString
   plan: MyString
-  compleated: 1
+  completed: 1

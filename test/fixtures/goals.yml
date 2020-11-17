@@ -3,9 +3,9 @@
 one:
   description: MyString
   todo_id: 1
-  compleated: 1
+  completed: 1
 
 two:
   description: MyString
   todo_id: 1
-  compleated: 1
+  completed: 1

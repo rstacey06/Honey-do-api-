@@ -12,7 +12,7 @@ class GoalsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create goal" do
     assert_difference('Goal.count') do
-      post goals_url, params: { goal: { compleated: @goal.compleated, description: @goal.description, todo_id: @goal.todo_id } }, as: :json
+      post goals_url, params: { goal: { completed: @goal.completed, description: @goal.description, todo_id: @goal.todo_id } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class GoalsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update goal" do
-    patch goal_url(@goal), params: { goal: { compleated: @goal.compleated, description: @goal.description, todo_id: @goal.todo_id } }, as: :json
+    patch goal_url(@goal), params: { goal: { completed: @goal.completed, description: @goal.description, todo_id: @goal.todo_id } }, as: :json
     assert_response 200
   end
 
